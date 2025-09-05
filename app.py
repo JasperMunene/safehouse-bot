@@ -122,10 +122,15 @@ class SessionResource(Resource):
         session.clear()
         return jsonify({'message': 'Session cleared'})
 
+class HealthResource(Resource):
+    def get(self):
+        return jsonify({'status': 'ok'})
+
 
 # Add resources
 api.add_resource(ChatResource, '/api/chat')
 api.add_resource(SessionResource, '/api/session')
+api.add_resource(HealthResource, '/api/health')
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
